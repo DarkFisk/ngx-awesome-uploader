@@ -68,11 +68,9 @@ export class FilePreviewItemComponent implements OnInit {
 
   public onRemove(fileItem: FilePreviewModel): void {
     this._uploadUnsubscribe();
-    let response = this.uploadResponse;
-    response ??= fileItem.uploadResponse;
     this.removeFile.next({
       ...fileItem,
-      uploadResponse: response
+      uploadResponse: this.uploadResponse || fileItem.uploadResponse
     });
    }
 
